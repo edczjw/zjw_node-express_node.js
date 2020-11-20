@@ -7,13 +7,9 @@ superagentCharset(superagent);
 module.exports={   
     // webSite数据提交接口
     saveWebSite:(req,res)=>{   
-        let webName = req.body.webName
-        let webUrl = req.body.webUrl
-        let webLogo = req.body.webLogo
-        let webDesc = req.body.webDesc
-        let webType = req.body.webType 
-        var sql = "INSERT INTO webSiteList (webName,webUrl,webLogo,webDesc,webType) VALUES (?,?,?,?,?)";
-        var sqlArr = [webName,webUrl,webLogo,webDesc,webType];
+        let webName = req.body.webName,webUrl = req.body.webUrl,webLogo = req.body.webLogo,webDesc = req.body.webDesc,webType = req.body.webType,webDate = req.body.webDate;
+        var sql = "INSERT INTO webSiteList (webName,webUrl,webLogo,webDesc,webType,webDate) VALUES (?,?,?,?,?,?)";
+        var sqlArr = [webName,webUrl,webLogo,webDesc,webType,webDate];
         var callback = (err,data)=>{
         if(err){
             return res.json({ code: 400, msg: err});
@@ -21,7 +17,7 @@ module.exports={
             //返回数据
             res.status(200).json({
                 code:'0000',
-                msg:'保存成功'
+                msg:'网站录入成功'
             })
         }
         } 
